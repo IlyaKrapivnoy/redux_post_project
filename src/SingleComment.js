@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
+import { commentUpdate } from './redux/actions';
 
 function SingleComment({ data }) {
     const [commentText, setCommentText] = useState('');
     const { text, id } = data;
+
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        console.log('submit comment text >>', commentText);
+    };
 
     useEffect(() => {
         if (text) {
@@ -15,7 +21,7 @@ function SingleComment({ data }) {
     };
 
     return (
-        <form className='comments-item'>
+        <form className='comments-item' onSubmit={handleUpdate}>
             <div className='comments-item-delete'>&times;</div>
             <input type='text' value={commentText} onChange={handleInput} />
             <input type='submit' hidden />
