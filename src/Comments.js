@@ -1,3 +1,5 @@
+import SingleComment from './SingleComment';
+
 function Comments(props) {
     console.log('comments props >>', props);
 
