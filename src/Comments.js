@@ -3,13 +3,18 @@ import { useState } from 'react';
 import { commentCreate } from './redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
+// import { commentsReducer } from './redux/commentsReducer';
 
 function Comments(props) {
     // console.log('comments props >>', props);
     const [textComment, setTextComment] = useState('');
     const comments = useSelector((state) => {
         console.log('redux state >>', state);
+        const {commentsReducer} = state;
+        return commentsReducer.comments;
     });
+    console.log('redux comments >>', comments);
+
     const dispatch = useDispatch();
 
     const handleInput = (e) => {
@@ -30,7 +35,9 @@ function Comments(props) {
                 <input type='text' value={textComment} onChange={handleInput} />
                 <input type='submit' hidden />
             </form>
-            <SingleComment />
+            {!!comments.length && comments.map(res =>{
+                return <SingleComment key={res.id} data={res} />
+            })}
         </div>
     );
 }

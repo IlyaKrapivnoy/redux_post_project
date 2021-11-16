@@ -1,5 +1,5 @@
-const SingleComment = (props) => {
-    console.log('single comment props >>', props);
+const SingleComment = ({ data }) => {
+    const { text, id } = data;
     return (
         <form className='comments-item'>
             <div className='comments-item-delete'>&times;</div>
