@@ -22,6 +22,6 @@ export function inputText(text) {
 export function commentCreate(text, id) {
     return {
         type: COMMENT_CREATE,
-        date: { text: text, id: id },
+        date: { text, id },
     };
 }
