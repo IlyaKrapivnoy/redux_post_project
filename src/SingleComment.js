@@ -1,8 +1,23 @@
 import { useEffect, useState } from 'react';
+import { commentUpdate, commentDelete } from './redux/actions';
+import { useDispatch } from 'react-redux';
 
 function SingleComment({ data }) {
     const [commentText, setCommentText] = useState('');
     const { text, id } = data;
+
+    const dispatch = useDispatch();
+
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        console.log('submit comment text >>', commentText);
+        dispatch(commentUpdate(commentText, id));
+    };
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        dispatch(commentDelete(id));
+    };
 
     useEffect(() => {
         if (text) {
@@ -15,8 +30,10 @@ function SingleComment({ data }) {
     };
 
     return (
-        <form className='comments-item'>
-            <div className='comments-item-delete'>&times;</div>
+        <form className='comments-item' onSubmit={handleUpdate}>
+            <div className='comments-item-delete' onClick={handleDelete}>
+                &times;
+            </div>
             <input type='text' value={commentText} onChange={handleInput} />
             <input type='submit' hidden />
         </form>
