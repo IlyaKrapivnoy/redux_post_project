@@ -15,8 +15,8 @@ function SingleComment({ data }) {
     };
 
     const handleDelete = (e) => {
-        console.log('click');
         e.preventDefault();
+        dispatch(commentDelete(id));
     };
 
     useEffect(() => {
