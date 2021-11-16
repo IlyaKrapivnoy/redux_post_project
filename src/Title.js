@@ -11,7 +11,7 @@ function Title(props) {
                 <input type='text' onChange={handleChange} />
             </div>
         </div>
-    );
+    ); 
 }
 
 export default Title;
