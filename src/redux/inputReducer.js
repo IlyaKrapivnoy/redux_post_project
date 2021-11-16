@@ -11,10 +11,11 @@ export const inputReducer = (state = initialState, action) => {
         case INPUT_TEXT:
             return {
                 ...state,
-                // text:
+                text: action.text,
             };
 
         default:
             return state;
     }
 };
+ 
