@@ -1,13 +1,15 @@
 import SingleComment from './SingleComment';
 import { useState } from 'react';
 import { commentCreate } from './redux/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
 
 function Comments(props) {
     // console.log('comments props >>', props);
     const [textComment, setTextComment] = useState('');
-
+    const comments = useSelector((state) => {
+        console.log('redux state >>', state);
+    });
     const dispatch = useDispatch();
 
     const handleInput = (e) => {
