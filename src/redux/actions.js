@@ -95,6 +95,7 @@ export function commentsLoad() {
             }, 1000);
         } catch (error) {
             dispatch(errorOn('API ERROR'));
+            dispatch(loaderOff());
         }
 
     };
