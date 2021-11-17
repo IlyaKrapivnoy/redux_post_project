@@ -8,6 +8,8 @@ import {
     COMMENTS_LOAD,
     LOADER_DISPLAY_ON,
     LOADER_DISPLAY_OFF,
+    ERROR_DISPLAY_ON,
+    ERROR_DISPLAY_OFF,
 } from './types';
 
 export function incrementLikes() {
@@ -59,6 +61,19 @@ export function loaderOn() {
 export function loaderOff() {
     return {
         type: LOADER_DISPLAY_OFF,
+    };
+}
+
+export function errorOn(text) {
+    return {
+        type: ERROR_DISPLAY_ON,
+        text,
+    };
+}
+
+export function errorOff() {
+    return {
+        type: ERROR_DISPLAY_OFF,
     };
 }
 
