@@ -1,6 +1,6 @@
 import SingleComment from './SingleComment';
-import { useState } from 'react';
-import { commentCreate } from './redux/actions';
+import { useEffect, useState } from 'react';
+import { commentCreate, commentsLoad } from './redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
 // import { commentsReducer } from './redux/commentsReducer';
@@ -10,7 +10,7 @@ function Comments(props) {
     const [textComment, setTextComment] = useState('');
     const comments = useSelector((state) => {
         console.log('redux state >>', state);
-        const {commentsReducer} = state;
+        const { commentsReducer } = state;
         return commentsReducer.comments;
     });
     console.log('redux comments >>', comments);
@@ -29,15 +29,20 @@ function Comments(props) {
         dispatch(commentCreate(textComment, id));
     };
 
+    useEffect(() => {
+        dispatch(commentsLoad());
+    }, []);
+
     return (
         <div className='card-comments'>
             <form onSubmit={handleSubmit} className='comments-item-create'>
                 <input type='text' value={textComment} onChange={handleInput} />
                 <input type='submit' hidden />
             </form>
-            {!!comments.length && comments.map(res =>{
-                return <SingleComment key={res.id} data={res} />
-            })}
+            {!!comments.length &&
+                comments.map((res) => {
+                    return <SingleComment key={res.id} data={res} />;
+                })}
         </div>
     );
 }
