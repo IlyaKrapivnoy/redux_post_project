@@ -18,6 +18,7 @@ export const commentsReducer = (state = initialState, action) => {
                 ...state,
                 comments: [...state.comments, action.data],
             };
+
         case COMMENTS_LOAD:
             const commentsNew = action.data.map((res) => {
                 return {
@@ -29,6 +30,7 @@ export const commentsReducer = (state = initialState, action) => {
                 ...state,
                 comments: commentsNew,
             };
+
         case COMMENT_UPDATE:
             const { data } = action;
             const { comments } = state;

@@ -11,6 +11,7 @@ export const likesReducer = (state = initialState, action) => {
                 ...state,
                 likes: state.likes + 1,
             };
+
         case DECREMENT:
             return {
                 ...state,

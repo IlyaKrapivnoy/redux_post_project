@@ -102,6 +102,5 @@ export function commentsLoad() {
             dispatch(errorOn('API ERROR'));
             dispatch(loaderOff());
         }
-
     };
 }

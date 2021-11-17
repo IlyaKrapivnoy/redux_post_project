@@ -3,10 +3,8 @@ import { useEffect, useState } from 'react';
 import { commentCreate, commentsLoad } from './redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
-// import { commentsReducer } from './redux/commentsReducer';
 
 function Comments(props) {
-    // console.log('comments props >>', props);
     const [textComment, setTextComment] = useState('');
     const comments = useSelector((state) => {
         console.log('redux state >>', state);

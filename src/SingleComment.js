@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 function SingleComment({ data }) {
     const [commentText, setCommentText] = useState('');
     const { text, id } = data;
-
     const dispatch = useDispatch();
 
     const handleUpdate = (e) => {
