@@ -3,8 +3,11 @@ import Likes from './Likes';
 import Title from './Title';
 import Comments from './Comments';
 import Spin from './Spin';
+import { useSelector } from 'react-redux';
 
 function App() {
+    const error = useSelector((state) => state.appReducer.error);
+    console.log('error >>', error);
     return (
         <div className='App'>
             <div className='wrap'>
