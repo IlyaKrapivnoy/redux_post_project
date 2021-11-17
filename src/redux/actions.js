@@ -79,11 +79,12 @@ export function errorOff() {
 
 export function commentsLoad() {
     return async (dispatch) => {
-        dispatch(loaderOn());
-        const response = await fetch(
-            'https://jsonplaceholder.typicode.com/comments?_limit=10'
-        );
-        const jsonData = await response.json();
+        try {
+            dispatch(loaderOn());
+            const response = await fetch(
+                'https://jsonplaceholder.typicode.com/comments?_limit=10'
+            );
+            const jsonData = await response.json();
 
             setTimeout(() => {
                 dispatch({
@@ -92,6 +93,9 @@ export function commentsLoad() {
                 });
                 dispatch(loaderOff());
             }, 1000);
+        } catch (error) {
+            dispatch(errorOn('API ERROR'));
+        }
 
     };
 }
