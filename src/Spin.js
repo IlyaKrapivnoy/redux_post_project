@@ -3,6 +3,7 @@ import Loader from 'react-loader-spinner';
 
 const Spin = (props) => {
     const spinner = useSelector((state) => state.appReducer.loading);
+    console.log('spinner >>', spinner);
     return (
         <div className='loader-styles'>
             <Loader
